@@ -26,31 +26,40 @@ public class Ejemplo09 {
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
         
-        String cadenaFinal;
-        int nota = 0;
+        String cadenaFinal= "";
+        double nota;
         int salida;
         String nombre; // *
         double promedio;
         boolean bandera = true;
-        int suma = 0;
+        double suma = 0;
         int contador_calificaciones = 0;
-        
-        cadenaFinal = "Listado de Notas\n";
+        String descripcion;
+       
         
         do {
-            
-            
+            System.out.println("Ingrese el nombre");
+            nombre = entrada.nextLine();
+            System.out.println("Ingrese la calificación");
+            nota = entrada.nextDouble();
             // agrego valor al acumulador
             suma = suma + nota;
             // agrego una unidad al contador para luego sacar el promedio
             contador_calificaciones = contador_calificaciones + 1;
             
-            
-            System.out.println("Ingrese (-111) si desea salir del ciclo; "
-                    + "cualquier otro número para continuar");
+            if (( nota >= 5) && (nota <= 10)){
+                descripcion = "Muy buena";
+                
+            } else {
+            descripcion = "Buena";
+        }
+            cadenaFinal = cadenaFinal + "Calificación " + nota + "-" + descripcion 
+                    + " del estudiante " + nombre + "\n";
+            System.out.println("Ingrese (1) si desea salir del ciclo; "
+                    + "o cualquier otro número para continuar");
             salida = entrada.nextInt();
 
-            if (salida == -111) {
+            if (salida == 1) {
                 bandera = false;
             }
             // atención
@@ -61,8 +70,9 @@ public class Ejemplo09 {
         } while (bandera); // (bandera==true)
         
         // promedio = suma / contador_calificaciones;
-        promedio = (double)suma / contador_calificaciones;
-        cadenaFinal = String.format("%s\nPromedio de calificaciones: %.2f",
+        promedio = suma / contador_calificaciones;
+        cadenaFinal = String.format("Listado de notas\n%s\n"
+                + "Promedio de calificaciones: %.2f",
                 cadenaFinal,
                 promedio);
         System.out.printf("%s\n", cadenaFinal);
