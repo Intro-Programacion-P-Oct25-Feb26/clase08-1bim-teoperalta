@@ -27,7 +27,7 @@ public class Ejemplo09 {
         entrada.useLocale(Locale.US);
         
         String cadenaFinal;
-        int nota;
+        int nota = 0;
         int salida;
         String nombre; // *
         double promedio;
