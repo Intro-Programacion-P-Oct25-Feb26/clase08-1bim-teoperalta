@@ -28,25 +28,33 @@ import java.util.Scanner;
  */
 public class Ejemplo06 {
 
+
+
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
         int tabla;
         int operacion;
         int contador = 1;
+        int limite;
+        
         System.out.println("Ingrese la tabla a generar");
-        tabla = entrada.nextInt(); // 2
-
+        tabla = entrada.nextInt(); 
+        System.out.println("Ingrese el limite");
+        limite = entrada.nextInt();
+        
+        if (!((limite % 2 == 0) && (tabla % 2 == 0))) {
+            tabla = 10;
+            limite = 20;
+        }
+        
         do {
-            operacion = tabla * contador; // 2*1=2 // 2*2=4
-                                   // 2 x 1 = 2
-                                   // 2 x 2 = 4
+            operacion = tabla * contador;
             System.out.printf("%d x %d = %d\n", 
                     tabla, 
                     contador, 
                     operacion);
             contador = contador + 1;
-        } while (contador <= 10);
-
+        } while (contador <= limite);
     }
 }
